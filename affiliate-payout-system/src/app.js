@@ -18,8 +18,8 @@ app.get("/" , (req , res) =>
 })
 
 app.use("/api/users" , userRoutes);
-app.use("api/sales" , saleRoutes);
-app.use("api/payouts" , payoutRoutes);
+app.use("/api/sales" , saleRoutes);
+app.use("/api/payouts" , payoutRoutes);
 app.use("/api/withdrawals" , withdrawalRoutes);
 
 module.exports = app;

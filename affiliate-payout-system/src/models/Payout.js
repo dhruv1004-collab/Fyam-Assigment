@@ -1,20 +1,21 @@
 const mongoose = require("mongoose");
 
+
 const payoutSchema = new mongoose.Schema({
     userId : {
-        type : mongoose.Schema.Type.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "User",
         required : true
     },
 
     saleId: {
-        type : mongoose.Schema.Type.ObjectId,
+        type : mongoose.Schema.Types.ObjectId,
         ref : "Sale"
     },
 
     type : {
         type : String,
-        status : ["advance", "final" , "adjustment"],
+        enum : ["advance", "final" , "adjustment"],
         required : true
     },
 
@@ -25,9 +26,9 @@ const payoutSchema = new mongoose.Schema({
 
     status : {
         type : String , 
-        status : ["pending" , "success" , "failed" , "cancelled" , "rejected"],
+        enum : ["pending" , "success" , "failed" , "cancelled" , "rejected"],
         default : "pending"
     }
 } , {timestamps : true});
 
-module.export = mongoose.model("Payout" , payoutSchema);
+module.exports = mongoose.model("Payouts" , payoutSchema);

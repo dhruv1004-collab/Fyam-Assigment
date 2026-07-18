@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 
+// console.log("Sale model loaded");
+
 const saleSchema = new mongoose.Schema({
     userId: {
-        type : mongoose.Schema.Types.ObjectID,
+        type: mongoose.Schema.Types.ObjectId,
         ref : "User",
         required : true
     },
@@ -19,13 +21,13 @@ const saleSchema = new mongoose.Schema({
 
     status : {
         type : String,
-        states : ["pending" , "approved" , "rejected"],
+        enum : ["pending" , "approved" , "rejected"],
         default : "pending"
     },
 
     advancePaid :{
         type : Boolean,
-        default : true
+        default : false
     },
     
     advanceAmount : {
